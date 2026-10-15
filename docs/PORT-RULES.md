@@ -4,7 +4,7 @@ This repo is a **public, standalone** port of a private finance system. Every mo
 
 ## Never in this repo
 - No real company, person, supplier, customer, mailbox, domain, VAT number, phone, bank detail, Slack id, server name, API key or token. Examples in docs use `example.com`, "Acme Worktops", "the owner", "the accountant".
-- No CRM-specific code: no `@/lib/db/*`, DynamoDB, Vercel Blob, KMS, Slack client, Google Sheets as a hard dependency, `@sheraton-os/*` imports.
+- No CRM-specific code: no `@/lib/db/*`, DynamoDB, Vercel Blob, KMS, Slack client, Google Sheets as a hard dependency, private-monorepo package imports.
 - No hard-coded mailboxes, channels or domains: read them from `getConnections()` (`lib/core/config.ts`).
 
 ## Building blocks (use these, do not reimplement)

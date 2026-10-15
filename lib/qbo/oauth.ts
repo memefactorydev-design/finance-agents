@@ -1,5 +1,5 @@
 // QuickBooks Online OAuth 2.0 with encrypted token custody and a guarded
-// self-healing refresh. Ported from the Sheraton OS finance package: the realm
+// self-healing refresh. Ported from a production finance system: the realm
 // binds on the first consent, every token use checks the binding, a refresh
 // whose outcome was lost is retried on a schedule, and a dead grant ends in a
 // clear "reconnect" state rather than a storm of retries.
