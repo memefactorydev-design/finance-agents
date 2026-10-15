@@ -49,7 +49,11 @@ export async function POST(request: Request) {
   try {
     const p = await requirePrincipal(request);
     sameOrigin(request);
-    const body = profilePatch.extend({ vendorId: VENDOR_ID }).parse(await request.json());
+    const raw = await request.json();
+    // Learning supplier defaults from QuickBooks history runs through the
+    // intake module (POST /api/finance/intake {action:"learn"}); this route only keeps profiles.
+    if (raw?.action) return NextResponse.json({ error: { code: "NOT_SUPPORTED", message: `action "${String(raw.action)}" is not available here; use POST /api/finance/intake {action:"learn"}` } }, { status: 501 });
+    const body = profilePatch.extend({ vendorId: VENDOR_ID }).parse(raw);
     const { vendorId, ...patch } = body;
     const existing = await getSupplierProfile(vendorId);
     if (!existing && !patch.vendorName) return NextResponse.json({ error: { code: "VENDOR_NAME_REQUIRED", message: "vendorName is required for a new profile" } }, { status: 400 });

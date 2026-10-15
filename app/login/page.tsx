@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
   const params = useSearchParams();
   const [email, setEmail] = React.useState("");
@@ -21,14 +21,20 @@ export default function LoginPage() {
     } finally { setBusy(false); }
   };
   return (
+    <form onSubmit={submit} className="space-y-3">
+      <Input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required autoFocus />
+      <Input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+      <Button type="submit" className="w-full" loading={busy}>Sign in</Button>
+    </form>
+  );
+}
+
+export default function LoginPage() {
+  return (
     <main className="min-h-screen flex items-center justify-center p-6">
       <Card className="w-full max-w-sm p-6 space-y-4">
         <div><h1 className="text-2xl font-bold font-display">Finance Agents</h1><p className="text-sm text-muted-foreground">Sign in as the owner.</p></div>
-        <form onSubmit={submit} className="space-y-3">
-          <Input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required autoFocus />
-          <Input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-          <Button type="submit" className="w-full" loading={busy}>Sign in</Button>
-        </form>
+        <React.Suspense fallback={null}><LoginForm /></React.Suspense>
         <p className="text-xs text-muted-foreground">First time here? <a className="underline" href="/setup">Run setup</a>.</p>
       </Card>
     </main>
