@@ -1,0 +1,9 @@
+{
+  "crons": [
+    { "path": "/api/cron?job=intake", "schedule": "*/15 6-19 * * 1-6" },
+    { "path": "/api/cron?job=orders", "schedule": "5,35 6-19 * * 1-6" },
+    { "path": "/api/cron?job=qbo", "schedule": "*/15 * * * *" },
+    { "path": "/api/cron?job=crm-sync", "schedule": "*/30 * * * *" },
+    { "path": "/api/cron?job=intake-log", "schedule": "45 16 * * 1-5" }
+  ]
+}

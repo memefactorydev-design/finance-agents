@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 25% 98%;
+    --foreground: 235 25% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 235 25% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 235 25% 12%;
+    --primary: 243 70% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 226 30% 95%;
+    --secondary-foreground: 235 25% 12%;
+    --muted: 226 25% 95%;
+    --muted-foreground: 233 10% 46%;
+    --accent: 243 70% 58%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 226 20% 90%;
+    --input: 226 20% 90%;
+    --ring: 243 70% 58%;
+    --radius: 0.9rem;
+    --money: 43 55% 54%;
+    --money-foreground: 240 30% 15%;
+  }
+  .dark {
+    --background: 235 25% 7%;
+    --foreground: 220 25% 96%;
+    --card: 235 20% 11%;
+    --card-foreground: 220 25% 96%;
+    --popover: 235 20% 11%;
+    --popover-foreground: 220 25% 96%;
+    --primary: 243 80% 66%;
+    --primary-foreground: 235 30% 8%;
+    --secondary: 235 16% 17%;
+    --secondary-foreground: 220 25% 96%;
+    --muted: 235 16% 17%;
+    --muted-foreground: 230 12% 68%;
+    --accent: 235 16% 17%;
+    --accent-foreground: 220 25% 96%;
+    --destructive: 0 62.8% 50.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 235 14% 20%;
+    --input: 235 14% 20%;
+    --ring: 243 80% 66%;
+  }
+}
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground; font-feature-settings: "rlig" 1, "calt" 1; }
+  h1, h2, .font-display { font-family: var(--font-display), system-ui, sans-serif; letter-spacing: -0.02em; }
+}
+@layer utilities {
+  .scrollbar-none { scrollbar-width: none; }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+}

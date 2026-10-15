@@ -1,0 +1,16 @@
+# Example crontab for the agents (Europe/London; adjust paths). `crontab -e`
+# The app itself (npm run dev / start) and `npm run scheduler` must be running.
+CRON_TZ=Europe/London
+45 6 * * 1-5  cd /path/to/finance-agents && scripts/run-agent.sh finance-f0-orchestration "06:45 health check"
+0 7,12,16 * * 1-5  cd /path/to/finance-agents && scripts/run-agent.sh finance-f1-supplier-intake
+20 7,12,16 * * 1-5 cd /path/to/finance-agents && scripts/run-agent.sh finance-f8-bill-coding-posting
+0 8 * * 1-5   cd /path/to/finance-agents && scripts/run-agent.sh finance-f2-bank-ledger
+30 8 * * 1-5  cd /path/to/finance-agents && scripts/run-agent.sh finance-f3-customer-receipts
+0 9 * * 1-5   cd /path/to/finance-agents && scripts/run-agent.sh finance-f4-cashflow
+30 9,17 * * 1-6 cd /path/to/finance-agents && scripts/run-agent.sh finance-f9-reports-keeper
+0 10 * * 1    cd /path/to/finance-agents && scripts/run-agent.sh finance-f7-reconciliation
+0 17 * * 4    cd /path/to/finance-agents && scripts/run-agent.sh finance-f5-payment-proposals "Thursday draft"
+30 8 * * 5    cd /path/to/finance-agents && scripts/run-agent.sh finance-f5-payment-proposals "Friday final"
+0 18 * * 1-5  cd /path/to/finance-agents && scripts/run-agent.sh finance-f0-orchestration "18:00 money report"
+0 10 2 * *    cd /path/to/finance-agents && scripts/run-agent.sh finance-f6-pnl-commission
+0 9 * * 1-5   cd /path/to/finance-agents && scripts/run-agent.sh accounts-email-agent
